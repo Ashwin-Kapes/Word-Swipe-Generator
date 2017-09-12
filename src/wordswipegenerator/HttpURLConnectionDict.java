@@ -8,9 +8,9 @@ package wordswipegenerator;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  *
@@ -23,12 +23,11 @@ public class HttpURLConnectionDict {
     
     public void isGibbrish(String s) throws Exception{
         HttpURLConnectionDict http = new HttpURLConnectionDict();
-        System.out.println("Testing 1 - Send Http GET request");
         http.sentGetRequest(s);
     }
     
     private void sentGetRequest(String gp) throws Exception{
-        String finalUrl = urlEntries.concat("?&headword=" + gp);
+        String finalUrl = urlEntries.concat("?&search=" + gp);
         URL url = new URL(finalUrl);
         
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -37,8 +36,8 @@ public class HttpURLConnectionDict {
         con.setRequestProperty("User-Agent", USER_AGENT);
         
         int responseCode = con.getResponseCode();
-		System.out.println("Sending 'GET' request to URL : " + url);
-		System.out.println("Response Code : " + responseCode);
+		//System.out.println("Sending 'GET' request to URL : " + url);
+		//System.out.println("Response Code : " + responseCode);
 
 		BufferedReader in = new BufferedReader(
 		        new InputStreamReader(con.getInputStream()));
@@ -50,7 +49,14 @@ public class HttpURLConnectionDict {
 		}
 		in.close();
 
-		System.out.println(response.toString());
+		//System.out.println(response.toString());
+                
+                JSONObject jo = new JSONObject(response.toString());
+                Integer countKey = (Integer) jo.get("count");
+                if (countKey > 0) {
+                    System.out.print("########################\n" +gp + "\n########################\n");
+        }
+                //System.out.println("count: " + tsmresponse);
 
     }
     

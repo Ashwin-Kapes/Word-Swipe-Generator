@@ -21,21 +21,21 @@ public class keyToValueConverter {
     
     keyToValueConverter(List<List<Integer>> results) throws Exception {
         for(List<Integer> r : results){
-           System.out.print("#" + serial + "# " + r);
+           System.out.print("#" + serial + "# " + r + "\n");
             for (int i = 0; i < r.size(); i++) {
                 sb.append(ValMat[r.get(i)]);
             }
             String finalString = sb.toString();
             String reverseFinalString = sb.reverse().toString();
             
-            System.out.println(" - " + finalString + " | " + reverseFinalString);
+            //System.out.println(" - " + finalString + " | " + reverseFinalString);
             
             new HttpURLConnectionDict().isGibbrish(finalString);
             new HttpURLConnectionDict().isGibbrish(reverseFinalString);
             
             sb.setLength(0);
             serial++;
-            break;
+            //break;
         }
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }    

@@ -133,14 +133,14 @@ public class WordSwipeGenerator {
                for(int k = 0; k < N;k++){
                     for(int l = 0; l < N;l++){
                         if(k != l){
-                        System.out.println("Showing all paths from (" + k + ", " + l + ")");
+                        //System.out.println("Showing all paths from (" + k + ", " + l + ")");
                         List<List<Integer>> results = g.getAllPaths(k,l);
                         new keyToValueConverter(results);                            
-                        System.out.println("Size of List:" + results.size() + "\n");                       
+                        //System.out.println("Size of List:" + results.size() + "\n");                       
                         count = count + results.size();
                         }
                     }
-                    System.out.println("Total combinations: " + count);
+                    //System.out.println("Total combinations: " + count);
                }		
     }
     
