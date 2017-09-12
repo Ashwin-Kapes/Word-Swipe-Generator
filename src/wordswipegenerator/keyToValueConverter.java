@@ -19,7 +19,7 @@ public class keyToValueConverter {
     int serial = 1;
     StringBuilder sb = new StringBuilder();
     
-    keyToValueConverter(List<List<Integer>> results) {
+    keyToValueConverter(List<List<Integer>> results) throws Exception {
         for(List<Integer> r : results){
            System.out.print("#" + serial + "# " + r);
             for (int i = 0; i < r.size(); i++) {
@@ -27,7 +27,12 @@ public class keyToValueConverter {
             }
             String finalString = sb.toString();
             String reverseFinalString = sb.reverse().toString();
+            
             System.out.println(" - " + finalString + " | " + reverseFinalString);
+            
+            new HttpURLConnectionDict().isGibbrish(finalString);
+            new HttpURLConnectionDict().isGibbrish(reverseFinalString);
+            
             sb.setLength(0);
             serial++;
             break;

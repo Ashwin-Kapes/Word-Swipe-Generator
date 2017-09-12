@@ -79,7 +79,7 @@ public class WordSwipeGenerator {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Graph g = new Graph(N);
         //System.out.println(Arrays.deepToString(KeyMat));
         for(int i = 0; i < KeyMat.length;i++){
@@ -136,7 +136,7 @@ public class WordSwipeGenerator {
                         System.out.println("Showing all paths from (" + k + ", " + l + ")");
                         List<List<Integer>> results = g.getAllPaths(k,l);
                         new keyToValueConverter(results);                            
-                        System.out.println("Size of List:" + results.size());
+                        System.out.println("Size of List:" + results.size() + "\n");                       
                         count = count + results.size();
                         }
                     }
