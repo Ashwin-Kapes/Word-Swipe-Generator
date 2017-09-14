@@ -12,10 +12,10 @@ import java.util.List;
  * @author HP
  */
 public class keyToValueConverter {
-    static char[] ValMat = {'M', 'A', 'S', 'I'  //0  1  2  3
-                           ,'U', 'T', 'M', 'U'  //4  5  6  7
-                           ,'N', 'I', 'T', 'E'  //8  9  10 11
-                           ,'A', 'O', 'D', 'N'};//12 13 14 15
+    static char[] ValMat = {'l', 'b', 'a', 'e'  //0  1  2  3
+                           ,'o', 'o', 'u', 'i'  //4  5  6  7
+                           ,'s', 'k', 'p', 's'  //8  9  10 11
+                           ,'o', 'i', 'e', 'u'};//12 13 14 15
     int serial = 1;
     StringBuilder sb = new StringBuilder();
     
@@ -31,7 +31,9 @@ public class keyToValueConverter {
             //System.out.println(" - " + finalString + " | " + reverseFinalString);
             
             new HttpURLConnectionDict().isGibbrish(finalString);
+            if(!finalString.equals(reverseFinalString)){
             new HttpURLConnectionDict().isGibbrish(reverseFinalString);
+            }
             
             sb.setLength(0);
             serial++;
