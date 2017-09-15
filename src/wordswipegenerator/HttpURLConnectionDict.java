@@ -20,7 +20,7 @@ public class HttpURLConnectionDict {
     private String urlEntries = "http://api.pearson.com/v2/dictionaries/entries";
     private final String USER_AGENT = "Mozilla/5.0";
     
-    public void isGibbrish(String s) throws Exception{
+    public void checkDict(String s) throws Exception{
         HttpURLConnectionDict http = new HttpURLConnectionDict();
         http.sentGetRequest(s);
     }
@@ -46,7 +46,7 @@ public class HttpURLConnectionDict {
 		while ((inputLine = in.readLine()) != null) {
 			response.append(inputLine);
 		}
-		in.close();
+		//in.close();
 
 		//System.out.println(response.toString());
                 

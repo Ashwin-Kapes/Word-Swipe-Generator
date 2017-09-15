@@ -5,7 +5,10 @@
  */
 package wordswipegenerator;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -30,15 +33,25 @@ public class keyToValueConverter {
             
             //System.out.println(" - " + finalString + " | " + reverseFinalString);
             
-            new HttpURLConnectionDict().isGibbrish(finalString);
-            if(!finalString.equals(reverseFinalString)){
-            new HttpURLConnectionDict().isGibbrish(reverseFinalString);
-            }
+            new HttpURLConnectionDict().checkDict(finalString);
+//            if(!finalString.equals(reverseFinalString)){
+//            new HttpURLConnectionDict().checkDict(reverseFinalString);
+//            }
             
             sb.setLength(0);
             serial++;
             //break;
         }
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
+    }
+    List<List<Integer>> removeDuplicate(List<List<Integer>> tempres) throws Exception{
+                    //tempList.addAll(result);
+                    System.out.println("Size of list before adding to set" + tempres.size());
+                    Set<List<Integer>> tempset = new LinkedHashSet<List<Integer>>(tempres);//Set remove's duplicate
+                    System.out.println("Size of set" + tempset.size());
+                    List<List<Integer>> templist = new ArrayList<List<Integer>>();
+                    templist.addAll(tempset);
+                    System.out.println("Size of list after adding to set" + templist.size());
+                    return templist;            
+                }
 }

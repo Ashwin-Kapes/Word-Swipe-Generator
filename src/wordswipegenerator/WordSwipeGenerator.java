@@ -7,12 +7,12 @@ package wordswipegenerator;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Deque;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import javax.swing.text.Keymap;
+import java.util.Set;
 
 /**
  *
@@ -23,7 +23,8 @@ public class WordSwipeGenerator {
     static int[][] KeyMat =  {{0,1,2,3},{4,5,6,7},{8,9,10,11},{12,13,14,15}};
     static int ListMinSize = 3;
     static int ListMaxSize = 7;
-    static int count = 0;
+    static int count = 0;    
+    
     static class Graph{
 		int V;
 		Map<Integer, List<Integer>> adj; // Adjacency list                
@@ -53,13 +54,13 @@ public class WordSwipeGenerator {
 			getAllPathsDFS(u, v, visited, path, result);
 			return result;
 		}
-		
+                		
 		void getAllPathsDFS(int u, int v, boolean[] visited, Deque<Integer> path, List<List<Integer>> result){
 			visited[u] = true; // Mark visited
 			path.add(u); // Add to the end
 			if(u == v){
-                            if(path.size() >= ListMinSize && path.size() <= ListMaxSize){
-				result.add(new ArrayList<Integer>(path));
+                            if(path.size() >= ListMinSize && path.size() <= ListMaxSize){//To limit the number of characters in a string
+				result.add(new ArrayList<>(path));
                                 //System.out.println(path);
                             }
 			}
@@ -75,6 +76,8 @@ public class WordSwipeGenerator {
 			path.removeLast();
 			visited[u] = false;
 		}
+
+        
 	}
     /**
      * @param args the command line arguments
@@ -135,6 +138,7 @@ public class WordSwipeGenerator {
                         if(k != l){
                         //System.out.println("Showing all paths from (" + k + ", " + l + ")");
                         List<List<Integer>> results = g.getAllPaths(k,l);
+                        
                         new keyToValueConverter(results);                            
                         //System.out.println("Size of List:" + results.size() + "\n");                       
                         count = count + results.size();
